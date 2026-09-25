@@ -16,10 +16,12 @@ export default function TestChatPage() {
   const groupId = "test-group-123"
   const userId = "current-user-123"
   const userName = "Test User"
+
   const initialMessages = getStudyGroupMessages(groupId)
 
   return (
     <div className="container mx-auto p-6 space-y-6">
+      {/* Back Button */}
       <div className="flex items-center gap-4">
         <Button variant="outline" size="sm" asChild>
           <Link href="/dashboard/study-groups">
@@ -29,31 +31,54 @@ export default function TestChatPage() {
         </Button>
       </div>
 
+      {/* Page Header */}
       <div className="flex flex-col lg:flex-row justify-between items-start gap-4">
         <div>
-          <h1 className="text-3xl font-bold">Real-Time Chat Testing</h1>
-          <p className="text-muted-foreground mt-2">Test real-time messaging, typing indicators, and notifications</p>
+          <h1 className="text-3xl font-bold">
+            Real-Time Chat Testing
+          </h1>
+
+          <p className="text-muted-foreground mt-2">
+            Test real-time messaging, typing indicators, and notifications
+          </p>
         </div>
 
         <div className="flex gap-2">
-          <Button variant={activeDemo === "chat" ? "default" : "outline"} onClick={() => setActiveDemo("chat")}>
+          <Button
+            variant={activeDemo === "chat" ? "default" : "outline"}
+            onClick={() => setActiveDemo("chat")}
+          >
             Live Chat
           </Button>
-          <Button variant={activeDemo === "test" ? "default" : "outline"} onClick={() => setActiveDemo("test")}>
+
+          <Button
+            variant={activeDemo === "test" ? "default" : "outline"}
+            onClick={() => setActiveDemo("test")}
+          >
             Test Controls
           </Button>
         </div>
       </div>
 
+      {/* Main Content */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
         {/* Chat Interface */}
         <div className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Live Chat Interface</CardTitle>
+              <CardTitle>
+                Live Chat Interface
+              </CardTitle>
             </CardHeader>
+
             <CardContent className="p-0">
-              <RealTimeChat groupId={groupId} initialMessages={initialMessages} userId={userId} userName={userName} />
+              <RealTimeChat
+                groupId={groupId}
+                initialMessages={initialMessages}
+                userId={userId}
+                userName={userName}
+              />
             </CardContent>
           </Card>
         </div>
@@ -67,12 +92,20 @@ export default function TestChatPage() {
       {/* Instructions */}
       <Card>
         <CardHeader>
-          <CardTitle>How to Test Real-Time Features</CardTitle>
+          <CardTitle>
+            How to Test Real-Time Features
+          </CardTitle>
         </CardHeader>
+
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            {/* Chat Testing */}
             <div>
-              <h3 className="font-semibold mb-2">🚀 Testing Real-Time Chat:</h3>
+              <h3 className="font-semibold mb-2">
+                🚀 Testing Real-Time Chat:
+              </h3>
+
               <ul className="space-y-1 text-sm text-muted-foreground">
                 <li>• Type in the chat input to see typing indicators</li>
                 <li>• Send messages to see instant delivery</li>
@@ -81,8 +114,12 @@ export default function TestChatPage() {
               </ul>
             </div>
 
+            {/* Notification Testing */}
             <div>
-              <h3 className="font-semibold mb-2">🔔 Testing Notifications:</h3>
+              <h3 className="font-semibold mb-2">
+                🔔 Testing Notifications:
+              </h3>
+
               <ul className="space-y-1 text-sm text-muted-foreground">
                 <li>• Click notification buttons to trigger alerts</li>
                 <li>• Check the notification center for updates</li>
@@ -91,8 +128,12 @@ export default function TestChatPage() {
               </ul>
             </div>
 
+            {/* User Interaction Testing */}
             <div>
-              <h3 className="font-semibold mb-2">👥 Testing User Interactions:</h3>
+              <h3 className="font-semibold mb-2">
+                👥 Testing User Interactions:
+              </h3>
+
               <ul className="space-y-1 text-sm text-muted-foreground">
                 <li>• Simulate users joining/leaving groups</li>
                 <li>• Test multiple users typing simultaneously</li>
@@ -101,8 +142,12 @@ export default function TestChatPage() {
               </ul>
             </div>
 
+            {/* Connection Testing */}
             <div>
-              <h3 className="font-semibold mb-2">⚡ Connection Testing:</h3>
+              <h3 className="font-semibold mb-2">
+                ⚡ Connection Testing:
+              </h3>
+
               <ul className="space-y-1 text-sm text-muted-foreground">
                 <li>• Monitor connection status indicator</li>
                 <li>• Test features when connected/disconnected</li>
@@ -110,6 +155,7 @@ export default function TestChatPage() {
                 <li>• Verify message delivery reliability</li>
               </ul>
             </div>
+
           </div>
         </CardContent>
       </Card>
