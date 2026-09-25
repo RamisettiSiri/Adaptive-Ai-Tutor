@@ -7,20 +7,22 @@ import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import { RealTimeChat } from "@/components/real-time-chat"
 import { ChatTestPanel } from "@/components/chat-test-panel"
-import { getStudyGroupMessages } from "@/lib/study-groups"
 
 export default function TestChatPage() {
   const [activeDemo, setActiveDemo] = useState<"chat" | "test">("chat")
 
-  // Mock data for testing
+  // Test data
   const groupId = "test-group-123"
   const userId = "current-user-123"
   const userName = "Test User"
 
-  const initialMessages = getStudyGroupMessages(groupId)
+  // Empty initial messages for the test page.
+  // Real-time messages can still be handled by RealTimeChat.
+  const initialMessages = []
 
   return (
     <div className="container mx-auto p-6 space-y-6">
+
       {/* Back Button */}
       <div className="flex items-center gap-4">
         <Button variant="outline" size="sm" asChild>
@@ -31,7 +33,7 @@ export default function TestChatPage() {
         </Button>
       </div>
 
-      {/* Page Header */}
+      {/* Header */}
       <div className="flex flex-col lg:flex-row justify-between items-start gap-4">
         <div>
           <h1 className="text-3xl font-bold">
@@ -60,7 +62,7 @@ export default function TestChatPage() {
         </div>
       </div>
 
-      {/* Main Content */}
+      {/* Chat + Test Controls */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
         {/* Chat Interface */}
@@ -87,6 +89,7 @@ export default function TestChatPage() {
         <div className="space-y-4">
           <ChatTestPanel groupId={groupId} />
         </div>
+
       </div>
 
       {/* Instructions */}
@@ -100,7 +103,6 @@ export default function TestChatPage() {
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-            {/* Chat Testing */}
             <div>
               <h3 className="font-semibold mb-2">
                 🚀 Testing Real-Time Chat:
@@ -114,7 +116,6 @@ export default function TestChatPage() {
               </ul>
             </div>
 
-            {/* Notification Testing */}
             <div>
               <h3 className="font-semibold mb-2">
                 🔔 Testing Notifications:
@@ -128,7 +129,6 @@ export default function TestChatPage() {
               </ul>
             </div>
 
-            {/* User Interaction Testing */}
             <div>
               <h3 className="font-semibold mb-2">
                 👥 Testing User Interactions:
@@ -142,7 +142,6 @@ export default function TestChatPage() {
               </ul>
             </div>
 
-            {/* Connection Testing */}
             <div>
               <h3 className="font-semibold mb-2">
                 ⚡ Connection Testing:
@@ -159,6 +158,7 @@ export default function TestChatPage() {
           </div>
         </CardContent>
       </Card>
+
     </div>
   )
 }
