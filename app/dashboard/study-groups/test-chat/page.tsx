@@ -7,7 +7,7 @@ import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import { RealTimeChat } from "@/components/real-time-chat"
 import { ChatTestPanel } from "@/components/chat-test-panel"
-import { mockStudyGroupMessages } from "@/lib/study-groups"
+import { getStudyGroupMessages } from "@/lib/study-groups"
 
 export default function TestChatPage() {
   const [activeDemo, setActiveDemo] = useState<"chat" | "test">("chat")
@@ -16,7 +16,7 @@ export default function TestChatPage() {
   const groupId = "test-group-123"
   const userId = "current-user-123"
   const userName = "Test User"
-  const initialMessages = mockStudyGroupMessages.filter((msg) => msg.groupId === groupId)
+  const initialMessages = getStudyGroupMessages(groupId)
 
   return (
     <div className="container mx-auto p-6 space-y-6">
